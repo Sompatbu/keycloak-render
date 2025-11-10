@@ -11,4 +11,4 @@ ENV KEYCLOAK_ADMIN_PASSWORD=admin
 # Build and run Keycloak
 RUN /opt/keycloak/bin/kc.sh build
 EXPOSE 8080
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--http-port=8080"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--http-port=8080", "--http-host=0.0.0.0"]
