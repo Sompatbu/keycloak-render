@@ -8,11 +8,12 @@ ENV KC_DB_URL=jdbc:postgresql://dpg-d48t1j8gjchc73f2urn0-a:5432/keycloak_db_3a3c
 ENV KC_DB_USERNAME=keycloak_db_3a3c_user
 ENV KC_DB_PASSWORD=GwDazTrX4tzOKxNl4dD6UT0LtKvrUTLc
 
+ENV KC_PROXY=edge
+ENV KC_HOSTNAME=keycloak-render-1-xi9b.onrender.com
+ENV KC_HOSTNAME_STRICT_HTTPS=true
+ENV KC_HTTP_ENABLED=true
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
-ENV KC_PROXY=edge
-ENV KC_HTTP_ENABLED=true
-ENV KC_HOSTNAME_STRICT=false
 ENV PORT=8080
 
 RUN /opt/keycloak/bin/kc.sh build
