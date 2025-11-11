@@ -10,13 +10,19 @@ ENV KC_DB_PASSWORD=GwDazTrX4tzOKxNl4dD6UT0LtKvrUTLc
 
 ENV KC_PROXY=edge
 ENV KC_HOSTNAME=keycloak-render-1-xi9b.onrender.com
-ENV KC_HOSTNAME_STRICT_HTTPS=true
+ENV KC_HOSTNAME_STRICT=false
+ENV KC_HOSTNAME_STRICT_HTTPS=false
 ENV KC_HTTP_ENABLED=true
+ENV KC_HTTP_RELATIVE_PATH=/
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
 ENV PORT=8080
 
-RUN /opt/keycloak/bin/kc.sh build
-EXPOSE 8080
+# Force URLs to use HTTPS manually
+ENV KC_HOSTNAME_STRICT_BACKCHANNEL=false
+ENV KC_PROXY_HEADERS=xforwarded
 
+RUN /opt/keycloak/bin/kc.sh build
+
+EXPOSE 8080
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--optimized", "--http-port=8080", "--http-host=0.0.0.0"]
